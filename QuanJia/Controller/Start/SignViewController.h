@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SignViewController : UIViewController
+@interface SignViewController : BaseViewController
 
 @end

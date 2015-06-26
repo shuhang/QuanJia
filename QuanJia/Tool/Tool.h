@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Tool : NSObject
+
++ ( CGFloat ) getRight : ( UIView * ) view;
++ ( CGFloat ) getBottom : ( UIView * ) view;
 
 @end

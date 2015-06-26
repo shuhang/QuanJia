@@ -7,6 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "StartViewController.h"
+#import "IQKeyboardManager.h"
+#import "IQSegmentedNextPrevious.h"
+#import "MainViewController.h"
+#import "Tab1ViewController.h"
+#import "Tab2ViewController.h"
+#import "Tab3ViewController.h"
+#import "Tab4ViewController.h"
 
 @interface AppDelegate ()
 
@@ -15,8 +23,40 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    //// keyboard
+    [[IQKeyboardManager sharedManager] setCanAdjustTextView:YES];
+    ////
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    MainViewController * mainController = [MainViewController new];
+    
+    Tab1ViewController * tab1 = [Tab1ViewController new];
+    Tab2ViewController * tab2 = [Tab2ViewController new];
+    Tab3ViewController * tab3 = [Tab3ViewController new];
+    Tab4ViewController * tab4 = [Tab4ViewController new];
+    
+    UINavigationController * navigation1 = [[UINavigationController alloc] initWithRootViewController:tab1];
+    UINavigationController * navigation2 = [[UINavigationController alloc] initWithRootViewController:tab2];
+    UINavigationController * navigation3 = [[UINavigationController alloc] initWithRootViewController:tab3];
+    UINavigationController * navigation4 = [[UINavigationController alloc] initWithRootViewController:tab4];
+    
+    mainController.controller = [UITabBarController new];
+    [mainController.controller.tabBar setBackgroundColor:[UIColor clearColor]];
+    [mainController.controller.view setFrame:mainController.view.frame];
+    [mainController.view addSubview:mainController.controller.view];
+    
+    [mainController.tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar_bg"]];
+    
+    mainController.controller.viewControllers = @[ navigation1, navigation2, navigation3, navigation4 ];
+    [mainController setupTabbarItem];
+    [mainController.controller setSelectedIndex:0];
+    
+    self.window.rootViewController = mainController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

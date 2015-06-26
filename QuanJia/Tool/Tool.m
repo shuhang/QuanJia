@@ -10,4 +10,14 @@
 
 @implementation Tool
 
++ ( CGFloat ) getRight : ( UIView * ) view
+{
+    return view.frame.origin.x + view.frame.size.width;
+}
+
++ ( CGFloat ) getBottom : ( UIView * ) view
+{
+    return view.frame.origin.y + view.frame.size.height;
+}
+
 @end

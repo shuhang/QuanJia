@@ -7,6 +7,8 @@
 //
 
 #import "Tab1ViewController.h"
+#import "StartViewController.h"
+#import "QuanInfoViewController.h"
 
 @interface Tab1ViewController ()
 
@@ -14,24 +16,46 @@
 
 @implementation Tab1ViewController
 
-- (void)viewDidLoad {
+- ( void ) viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setupTitle:@"首页"];
+    [self hideBackButton];
+    
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake( ( Screen_Width - 100 ) / 2, 200, 100, 40 );
+    button.backgroundColor = [UIColor blackColor];
+    [button setTitle:@"show quan" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(showQuanInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    
+    [self judgeLoginStatus];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- ( void ) judgeLoginStatus
+{
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString * token = [userDefaults objectForKey:@"token"];
+    if( token == nil || [token isEqualToString:@""] )
+    {
+        [self.navigationController pushViewController:[StartViewController new] animated:NO];
+    }
+    else
+    {
+        self.hasRefreshed = NO;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- ( void ) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
-*/
+
+- ( void ) showQuanInfo
+{
+    QuanInfoViewController * controller = [QuanInfoViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 @end

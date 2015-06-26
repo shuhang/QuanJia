@@ -10,4 +10,8 @@
 
 @interface MainViewController : UIViewController
 
+@property( nonatomic, strong ) UITabBarController * controller;
+
+- ( void ) setupTabbarItem;
+
 @end
