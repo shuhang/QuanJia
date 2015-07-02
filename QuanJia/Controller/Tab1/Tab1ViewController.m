@@ -9,9 +9,17 @@
 #import "Tab1ViewController.h"
 #import "StartViewController.h"
 #import "QuanInfoViewController.h"
+#import "AddQuestionViewController.h"
+#import "AddPostViewController.h"
+#import "AddActViewController.h"
+#import "AddQuanViewController.h"
+#import "SearchQuanViewController.h"
+#import "QuanTableViewCell.h"
 
-@interface Tab1ViewController ()
-
+@interface Tab1ViewController ()<UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView * quanTableView;
+}
 @end
 
 @implementation Tab1ViewController
@@ -20,16 +28,64 @@
 {
     [super viewDidLoad];
     [self setupTitle:@"首页"];
+    self.view.backgroundColor = Color_Light_Gray;
     [self hideBackButton];
     
-    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake( ( Screen_Width - 100 ) / 2, 200, 100, 40 );
-    button.backgroundColor = [UIColor blackColor];
-    [button setTitle:@"show quan" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(showQuanInfo) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    
     [self judgeLoginStatus];
+    
+    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, Screen_Width, 200)];
+    bottomView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:bottomView];
+    
+    UIButton * buttonJoinQuan = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonJoinQuan.frame = CGRectMake( 20, 0, Screen_Width - 40, 50 );
+    buttonJoinQuan.backgroundColor = [UIColor whiteColor];
+    [buttonJoinQuan setTitleColor:Color_Heavy_Gray forState:UIControlStateNormal];
+    [buttonJoinQuan setTitleColor:Bg_Red forState:UIControlStateHighlighted];
+    [buttonJoinQuan.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:Text_Size_Small]];
+    [buttonJoinQuan setTitle:@"\U0000F002  加入圈子" forState:UIControlStateNormal];
+    buttonJoinQuan.layer.cornerRadius = 5.0f;
+    buttonJoinQuan.layer.borderColor = Bg_Red.CGColor;
+    buttonJoinQuan.layer.borderWidth = 1;
+    [buttonJoinQuan addTarget:self action:@selector(showSearchQuan) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:buttonJoinQuan];
+    
+    UIButton * buttonAddQuan = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonAddQuan.frame = CGRectMake( 20, 70, Screen_Width - 40, 50 );
+    buttonAddQuan.backgroundColor = [UIColor whiteColor];
+    [buttonAddQuan setTitleColor:Color_Heavy_Gray forState:UIControlStateNormal];
+    [buttonAddQuan setTitleColor:Bg_Red forState:UIControlStateHighlighted];
+    [buttonAddQuan.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:Text_Size_Small]];
+    [buttonAddQuan setTitle:@"\U0000F067  创建圈子" forState:UIControlStateNormal];
+    buttonAddQuan.layer.cornerRadius = 5.0f;
+    buttonAddQuan.layer.borderColor = Bg_Red.CGColor;
+    buttonAddQuan.layer.borderWidth = 1;
+    [buttonAddQuan addTarget:self action:@selector(showCreateQuan) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:buttonAddQuan];
+    
+    UIButton * buttonNewUser = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonNewUser.frame = CGRectMake( 20, 140, Screen_Width - 40, 50 );
+    buttonNewUser.backgroundColor = [UIColor whiteColor];
+    [buttonNewUser setTitleColor:Color_Heavy_Gray forState:UIControlStateNormal];
+    [buttonNewUser setTitleColor:Bg_Red forState:UIControlStateHighlighted];
+    [buttonNewUser.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:Text_Size_Small]];
+    [buttonNewUser setTitle:@"\U0000F0EB  新手手册" forState:UIControlStateNormal];
+    buttonNewUser.layer.cornerRadius = 5.0f;
+    buttonNewUser.layer.borderColor = Bg_Green.CGColor;
+    buttonNewUser.layer.borderWidth = 1;
+    [buttonNewUser addTarget:self action:@selector(showNewUser) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:buttonNewUser];
+    
+    self.arrayQuan = [NSMutableArray array];
+    
+    quanTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 10, Screen_Width, Screen_Height + 50 )];
+    quanTableView.backgroundColor = Color_Light_Gray;
+    [quanTableView registerClass:[QuanTableViewCell class] forCellReuseIdentifier:QuanCell];
+    quanTableView.delegate = self;
+    quanTableView.dataSource = self;
+    quanTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    quanTableView.tableFooterView = bottomView;
+    [self.view addSubview:quanTableView];
 }
 
 - ( void ) judgeLoginStatus
@@ -46,16 +102,68 @@
     }
 }
 
+- ( void ) doRefreshSelfView
+{
+    for( int i = 0; i < 3; i ++ )
+    {
+        QuanEntity * entity = [QuanEntity new];
+        entity.name = @"";
+        entity.quanWord = @"";
+        entity.arrayUser = [NSMutableArray array];
+        [self.arrayQuan addObject:entity];
+    }
+    
+    [quanTableView reloadData];
+}
+
 - ( void ) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = NO;
 }
 
-- ( void ) showQuanInfo
+- ( void ) showNewUser
 {
-    QuanInfoViewController * controller = [QuanInfoViewController new];
+    
+}
+
+- ( void ) showCreateQuan
+{
+    AddQuanViewController * controller = [AddQuanViewController new];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- ( void ) showSearchQuan
+{
+    SearchQuanViewController * controller = [SearchQuanViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arrayQuan.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    QuanTableViewCell * cell = [tableView1 dequeueReusableCellWithIdentifier:QuanCell];
+    if( !cell )
+    {
+        cell = [[QuanTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QuanCell];
+    }
+    [cell updateCell];
+    return cell;
+}
+
+- ( CGFloat ) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 110;
+}
+
+- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView_ deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

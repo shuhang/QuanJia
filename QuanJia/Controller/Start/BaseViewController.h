@@ -19,6 +19,7 @@
 
 - ( void ) doBack;
 - ( void ) doNext;
+- ( void ) doRefreshSelfView;
 - ( void ) setupTitle : ( NSString * ) text;
 - ( void ) setupNextButtonTitle : ( NSString * ) text;
 - ( void ) hideBackButton;

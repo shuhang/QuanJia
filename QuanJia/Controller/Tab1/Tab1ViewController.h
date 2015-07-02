@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "QuanEntity.h"
 
 @interface Tab1ViewController : BaseViewController
+
+@property( nonatomic, strong ) NSMutableArray * arrayQuan;
 
 @end

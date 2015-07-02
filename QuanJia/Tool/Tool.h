@@ -14,4 +14,9 @@
 + ( CGFloat ) getRight : ( UIView * ) view;
 + ( CGFloat ) getBottom : ( UIView * ) view;
 
++ ( NSString * ) getNowTime : ( NSDate * ) date;
++ ( NSString * ) getWeekFromDate : ( NSString * ) selectDate;
+
++ ( NSMutableAttributedString * ) getModifyString : ( NSString * ) value;
+
 @end

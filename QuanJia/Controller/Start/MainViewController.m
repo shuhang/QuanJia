@@ -41,7 +41,7 @@
              }
              case 2:
              {
-                 item = [[UITabBarItem alloc] initWithTitle:@"设置" image:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tab3_p"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                 item = [[UITabBarItem alloc] initWithTitle:@"好友" image:[[UIImage imageNamed:@"tab3"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tab3_p"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
                  break;
              }
              case 3:

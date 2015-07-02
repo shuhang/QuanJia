@@ -7,9 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuestionEntity.h"
 
 @interface QuestionTableViewCell : UITableViewCell
 {
+    UIView * backgroundView;
+    UIImageView * headImageView;
+    UILabel * labelName;
+    UILabel * labelTime;
+    UIView * line;
+    UILabel * labelTitle;
+    UILabel * labelAnswer;
+    UILabel * labelPraise;
+    UILabel * labelComment;
     
+    UIView * viewLink;
+    UIView * viewPicture;
+    UIView * viewVoice;
 }
+
+@property( nonatomic, strong ) QuestionEntity * entity;
+
+- ( void ) updateCell;
+
 @end

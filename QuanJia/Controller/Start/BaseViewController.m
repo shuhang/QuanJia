@@ -50,13 +50,25 @@
     
     buttonBack = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonBack.frame = CGRectMake( 0, 0, 60, 44 );
-    [buttonBack.titleLabel setFont:[UIFont systemFontOfSize:Text_Size_Big]];
+    [buttonBack.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:Text_Size_Big]];
     [buttonBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [buttonBack setTitle:@"<       " forState:UIControlStateNormal];
+    [buttonBack setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    [buttonBack setTitle:@"\U0000F053    " forState:UIControlStateNormal];
     [buttonBack addTarget:self action:@selector(doBack) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * item1 = [[UIBarButtonItem alloc] initWithCustomView:buttonBack];
     
     self.navigationItem.leftBarButtonItem = item1;
+}
+
+- ( void ) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if( self.hasRefreshed == NO )
+    {
+        self.hasRefreshed = YES;
+        [self doRefreshSelfView];
+    }
 }
 
 - ( void ) doBack

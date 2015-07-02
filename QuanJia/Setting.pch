@@ -51,9 +51,13 @@ return instance;\
 
 //define text size
 #define Text_Size_Super_Big 30
-#define Text_Size_Big 17
+#define Text_Size_Big 15
 #define Text_Size_Small 13
 #define Text_Size_Micro 10
 #define Text_Size_Super_Micro 9
+
+//define cell id
+#define SearchQuanCell @"SearchQuanCell"
+#define QuanCell @"QuanCell"
 
 #endif
