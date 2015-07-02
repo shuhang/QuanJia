@@ -33,12 +33,12 @@
     
     [self judgeLoginStatus];
     
-    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, Screen_Width, 200)];
+    UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, Screen_Width, 230)];
     bottomView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:bottomView];
     
     UIButton * buttonJoinQuan = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonJoinQuan.frame = CGRectMake( 20, 0, Screen_Width - 40, 50 );
+    buttonJoinQuan.frame = CGRectMake( 20, 20, Screen_Width - 40, 50 );
     buttonJoinQuan.backgroundColor = [UIColor whiteColor];
     [buttonJoinQuan setTitleColor:Color_Heavy_Gray forState:UIControlStateNormal];
     [buttonJoinQuan setTitleColor:Bg_Red forState:UIControlStateHighlighted];
@@ -51,7 +51,7 @@
     [bottomView addSubview:buttonJoinQuan];
     
     UIButton * buttonAddQuan = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonAddQuan.frame = CGRectMake( 20, 70, Screen_Width - 40, 50 );
+    buttonAddQuan.frame = CGRectMake( 20, 90, Screen_Width - 40, 50 );
     buttonAddQuan.backgroundColor = [UIColor whiteColor];
     [buttonAddQuan setTitleColor:Color_Heavy_Gray forState:UIControlStateNormal];
     [buttonAddQuan setTitleColor:Bg_Red forState:UIControlStateHighlighted];
@@ -64,7 +64,7 @@
     [bottomView addSubview:buttonAddQuan];
     
     UIButton * buttonNewUser = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonNewUser.frame = CGRectMake( 20, 140, Screen_Width - 40, 50 );
+    buttonNewUser.frame = CGRectMake( 20, 160, Screen_Width - 40, 50 );
     buttonNewUser.backgroundColor = [UIColor whiteColor];
     [buttonNewUser setTitleColor:Color_Heavy_Gray forState:UIControlStateNormal];
     [buttonNewUser setTitleColor:Bg_Red forState:UIControlStateHighlighted];
@@ -78,7 +78,7 @@
     
     self.arrayQuan = [NSMutableArray array];
     
-    quanTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 10, Screen_Width, Screen_Height + 50 )];
+    quanTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 10, Screen_Width, Screen_Height )];
     quanTableView.backgroundColor = Color_Light_Gray;
     [quanTableView registerClass:[QuanTableViewCell class] forCellReuseIdentifier:QuanCell];
     quanTableView.delegate = self;
@@ -107,8 +107,8 @@
     for( int i = 0; i < 3; i ++ )
     {
         QuanEntity * entity = [QuanEntity new];
-        entity.name = @"";
-        entity.quanWord = @"";
+        entity.name = @"纯洁帝联盟";
+        entity.quanWord = @"快给我打钱，几百万都行";
         entity.arrayUser = [NSMutableArray array];
         [self.arrayQuan addObject:entity];
     }
@@ -152,18 +152,23 @@
     {
         cell = [[QuanTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QuanCell];
     }
+    cell.entity = [self.arrayQuan objectAtIndex:indexPath.row];
     [cell updateCell];
     return cell;
 }
 
 - ( CGFloat ) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 110;
+    return 106;
 }
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView_ deselectRowAtIndexPath:indexPath animated:YES];
+    
+    QuanInfoViewController * controller = [QuanInfoViewController new];
+    controller.entity = [self.arrayQuan objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

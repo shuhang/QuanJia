@@ -10,10 +10,15 @@
 #import "AddQuestionViewController.h"
 #import "AddPostViewController.h"
 #import "AddActViewController.h"
+#import "MJRefresh.h"
+#import "PostEntity.h"
+#import "PostTableViewCell.h"
+#import "Tool.h"
+#import "LinkEntity.h"
 
-@interface QuanInfoViewController ()
+@interface QuanInfoViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
-    
+    UITableView * dataTableView;
 }
 @end
 
@@ -23,6 +28,30 @@
 {
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setupTitle:self.entity.name];
+    
+    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake( 10, 0, Screen_Width - 10, 35)];
+    topView.backgroundColor = Color_Light_Gray;
+    UILabel * labelTitle = [[UILabel alloc] initWithFrame:CGRectMake( 10, 0, Screen_Width - 20, 30 )];
+    labelTitle.textAlignment = NSTextAlignmentCenter;
+    labelTitle.textColor = [UIColor whiteColor];
+    labelTitle.font = [UIFont systemFontOfSize:Text_Size_Micro];
+    labelTitle.text = self.entity.quanWord;
+    labelTitle.backgroundColor = Color_Heavy_Gray;
+    [topView addSubview:labelTitle];
+    
+    self.arrayData = [NSMutableArray array];
+    
+    dataTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 0, Screen_Width, Screen_Height + 10 )];
+    dataTableView.backgroundColor = Color_Light_Gray;
+    dataTableView.delegate = self;
+    dataTableView.dataSource = self;
+    dataTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    dataTableView.tableHeaderView = topView;
+    [dataTableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    [dataTableView headerBeginRefreshing];
+    [self.view addSubview:dataTableView];
     
     UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake( 0, Screen_Height - 40, Screen_Width, 40 )];
     bottomView.backgroundColor = Color_Heavy_Gray;
@@ -97,6 +126,56 @@
     [bottomView addSubview:buttonAct];
 }
 
+- ( void ) headerRereshing
+{
+    for( int i = 0; i < 10; i ++ )
+    {
+        PostEntity * entity = [PostEntity new];
+        entity.type = i % 3;
+        entity.postTitle = @"这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题这是标题aa";
+        entity.postInfo = @"这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容aa";
+        entity.userName = @"纯洁帝完美";
+        entity.userHeadUrl = @"http://118.186.214.42:5000/images/cc84b8f0-a30d-11e4-94bd-05c2c1bd021c.jpeg";
+        entity.createTime = @"2015-07-02 11:11";
+        entity.arrayAnswer = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
+        entity.arrayComment = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
+        entity.arrayPraise = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
+        entity.arrayActBack = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
+        entity.arrayActJoin = [NSMutableArray array];
+        
+        if( i % 3 == 1 || i == 5 )
+        {
+            LinkEntity * link = [LinkEntity new];
+            link.title = @"这就是链接的标题，这就是链接的标题";
+            link.imageUrl = @"http://118.186.214.42:5000/images/cc84b8f0-a30d-11e4-94bd-05c2c1bd021c.jpeg";
+            entity.arrayLink = [NSMutableArray arrayWithObjects:link, nil];
+        }
+        else
+        {
+            entity.arrayLink = [NSMutableArray array];
+        }
+        
+        entity.arrayPicture = [NSMutableArray array];
+        if( i % 3 == 2 )
+        {
+            for( int i = 0; i < 5; i ++ )
+            {
+                [entity.arrayPicture addObject:@"http://118.186.214.42:5000/images/cc84b8f0-a30d-11e4-94bd-05c2c1bd021c.jpeg"];
+            }
+        }
+        
+        entity.arrayVoice = [NSMutableArray array];
+        if( i == 5 || i == 4 || i == 0 )
+        {
+            [entity.arrayVoice addObject:@""];
+        }
+        
+        [self.arrayData addObject:entity];
+    }
+    [dataTableView reloadData];
+    [dataTableView headerEndRefreshing];
+}
+
 - ( void ) showAddQuestion
 {
     AddQuestionViewController * controller = [AddQuestionViewController new];
@@ -125,6 +204,92 @@
 {
     AddActViewController * controller = [AddActViewController new];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.arrayData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView1 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PostEntity * entity = [self.arrayData objectAtIndex:indexPath.row];
+    if( entity.type < 3 )
+    {
+        PostTableViewCell * cell = [tableView1 dequeueReusableCellWithIdentifier:PostTableCell];
+        if( !cell )
+        {
+            cell = [[PostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:PostTableCell];
+        }
+        cell.entity = entity;
+        [cell updateCell];
+        return cell;
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+- ( CGFloat ) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PostEntity * entity = [self.arrayData objectAtIndex:indexPath.row];
+    if( entity.type < 3 )
+    {
+        UILabel * tempLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        tempLabel.font = [UIFont systemFontOfSize:Text_Size_Big];
+        tempLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        tempLabel.numberOfLines = 2;
+        tempLabel.frame = CGRectMake( 20, 0, Screen_Width - 40, 0 );
+        if( entity.type == 1 )
+        {
+            [tempLabel setAttributedText:[Tool getModifyString:entity.postInfo]];
+        }
+        else
+        {
+            [tempLabel setAttributedText:[Tool getModifyString:entity.postTitle]];
+        }
+        [tempLabel sizeToFit];
+        CGFloat height = 100 + tempLabel.frame.size.height;
+        
+        if( entity.arrayLink.count == 0 && entity.arrayPicture.count == 0 && entity.arrayVoice.count == 0 )
+        {
+            height += 3;
+        }
+        else
+        {
+            height += 18;
+            if( entity.arrayLink.count > 0 )
+            {
+                height += 70;
+            }
+            if( entity.arrayPicture.count > 0 )
+            {
+                height += 50;
+                if( entity.arrayLink.count > 0 ) height += 5;
+            }
+            if( entity.arrayVoice.count > 0 )
+            {
+                height += 40;
+                if( entity.arrayLink > 0 ) height += 10;
+                if( entity.arrayPicture.count > 0 ) height += 5;
+                
+                if( entity.arrayLink.count == 0 && entity.arrayPicture.count == 0 ) height -= 10;
+            }
+        }
+        
+        return height;
+    }
+    else
+    {
+        return 160;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView_ deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

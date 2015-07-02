@@ -16,7 +16,7 @@
 		A55FF2A51B3B9BFD005A9A56 /* tab4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55FF29D1B3B9BFD005A9A56 /* tab4@2x.png */; };
 		A55FF2A61B3B9BFD005A9A56 /* tab4_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55FF29E1B3B9BFD005A9A56 /* tab4_p@2x.png */; };
 		A55FF2A91B3B9FDA005A9A56 /* QuanInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FF2A81B3B9FDA005A9A56 /* QuanInfoViewController.m */; };
-		A55FF3031B3BA64D005A9A56 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FF3021B3BA64D005A9A56 /* QuestionTableViewCell.m */; };
+		A55FF3031B3BA64D005A9A56 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FF3021B3BA64D005A9A56 /* PostTableViewCell.m */; };
 		A55FF3241B3BAE11005A9A56 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FF3061B3BAE11005A9A56 /* AFHTTPRequestOperation.m */; };
 		A55FF3251B3BAE11005A9A56 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FF3081B3BAE11005A9A56 /* AFHTTPRequestOperationManager.m */; };
 		A55FF3261B3BAE11005A9A56 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A55FF30A1B3BAE11005A9A56 /* AFHTTPSessionManager.m */; };
@@ -64,7 +64,7 @@
 		A57034E21B43AF2B00905827 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A57034E11B43AF2B00905827 /* fontawesome-webfont.ttf */; };
 		A57034E41B43CB4000905827 /* head_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A57034E31B43CB4000905827 /* head_default.png */; };
 		A57034E71B43D0F400905827 /* AskToJoinQuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57034E61B43D0F400905827 /* AskToJoinQuanViewController.m */; };
-		A57034EA1B43E03600905827 /* QuestionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A57034E91B43E03600905827 /* QuestionEntity.m */; };
+		A57034EA1B43E03600905827 /* PostEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A57034E91B43E03600905827 /* PostEntity.m */; };
 		A57034ED1B43EA0800905827 /* LinkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A57034EC1B43EA0800905827 /* LinkEntity.m */; };
 		A57D8B4D1B42352A0036B8B7 /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D8B4C1B42352A0036B8B7 /* CNPPopupController.m */; };
 		A57D8B7E1B4281EB0036B8B7 /* CoreSVP.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A57D8B741B4281EB0036B8B7 /* CoreSVP.bundle */; };
@@ -168,8 +168,8 @@
 		A55FF29E1B3B9BFD005A9A56 /* tab4_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab4_p@2x.png"; sourceTree = "<group>"; };
 		A55FF2A71B3B9FDA005A9A56 /* QuanInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuanInfoViewController.h; sourceTree = "<group>"; };
 		A55FF2A81B3B9FDA005A9A56 /* QuanInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuanInfoViewController.m; sourceTree = "<group>"; };
-		A55FF3011B3BA64D005A9A56 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
-		A55FF3021B3BA64D005A9A56 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
+		A55FF3011B3BA64D005A9A56 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
+		A55FF3021B3BA64D005A9A56 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		A55FF3051B3BAE11005A9A56 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		A55FF3061B3BAE11005A9A56 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		A55FF3071B3BAE11005A9A56 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -264,8 +264,8 @@
 		A57034E31B43CB4000905827 /* head_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_default.png; sourceTree = "<group>"; };
 		A57034E51B43D0F400905827 /* AskToJoinQuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskToJoinQuanViewController.h; sourceTree = "<group>"; };
 		A57034E61B43D0F400905827 /* AskToJoinQuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskToJoinQuanViewController.m; sourceTree = "<group>"; };
-		A57034E81B43E03600905827 /* QuestionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionEntity.h; sourceTree = "<group>"; };
-		A57034E91B43E03600905827 /* QuestionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionEntity.m; sourceTree = "<group>"; };
+		A57034E81B43E03600905827 /* PostEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostEntity.h; sourceTree = "<group>"; };
+		A57034E91B43E03600905827 /* PostEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostEntity.m; sourceTree = "<group>"; };
 		A57034EB1B43EA0800905827 /* LinkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkEntity.h; sourceTree = "<group>"; };
 		A57034EC1B43EA0800905827 /* LinkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkEntity.m; sourceTree = "<group>"; };
 		A57D8B4B1B42352A0036B8B7 /* CNPPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNPPopupController.h; sourceTree = "<group>"; };
@@ -474,8 +474,8 @@
 		A55FF3001B3BA5AA005A9A56 /* Tab1 */ = {
 			isa = PBXGroup;
 			children = (
-				A55FF3011B3BA64D005A9A56 /* QuestionTableViewCell.h */,
-				A55FF3021B3BA64D005A9A56 /* QuestionTableViewCell.m */,
+				A55FF3011B3BA64D005A9A56 /* PostTableViewCell.h */,
+				A55FF3021B3BA64D005A9A56 /* PostTableViewCell.m */,
 				A57D8BAC1B428F170036B8B7 /* SearchQuanTableViewCell.h */,
 				A57D8BAD1B428F170036B8B7 /* SearchQuanTableViewCell.m */,
 				A5694B481B44D6C200958284 /* QuanTableViewCell.h */,
@@ -851,8 +851,8 @@
 		A58B28061B39575A004DF0F8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				A57034E81B43E03600905827 /* QuestionEntity.h */,
-				A57034E91B43E03600905827 /* QuestionEntity.m */,
+				A57034E81B43E03600905827 /* PostEntity.h */,
+				A57034E91B43E03600905827 /* PostEntity.m */,
 				A57034EB1B43EA0800905827 /* LinkEntity.h */,
 				A57034EC1B43EA0800905827 /* LinkEntity.m */,
 				A5694B451B44D5FF00958284 /* QuanEntity.h */,
@@ -1330,7 +1330,7 @@
 				A58EB5041B411EE00058CFD5 /* SDWebImageDownloaderOperation.m in Sources */,
 				A58B28141B395EF1004DF0F8 /* SignViewController.m in Sources */,
 				A58EB4FB1B411EE00058CFD5 /* UIWindow+Launch.m in Sources */,
-				A55FF3031B3BA64D005A9A56 /* QuestionTableViewCell.m in Sources */,
+				A55FF3031B3BA64D005A9A56 /* PostTableViewCell.m in Sources */,
 				A58B27DE1B39558F004DF0F8 /* AppDelegate.m in Sources */,
 				A57D8BA41B428C6C0036B8B7 /* QBAssetsCollectionViewLayout.m in Sources */,
 				A58EB4EA1B411EE00058CFD5 /* CALayer+Anim.m in Sources */,
@@ -1342,7 +1342,7 @@
 				A58EB50E1B411EE00058CFD5 /* UIButton+SD.m in Sources */,
 				A57D8BA51B428C6C0036B8B7 /* QBImagePickerController.m in Sources */,
 				A58EB51E1B4122ED0058CFD5 /* GCPlaceholderTextView.m in Sources */,
-				A57034EA1B43E03600905827 /* QuestionEntity.m in Sources */,
+				A57034EA1B43E03600905827 /* PostEntity.m in Sources */,
 				A58EB5091B411EE00058CFD5 /* UIImage+MultiFormat.m in Sources */,
 				A57D8BA01B428C6C0036B8B7 /* QBAssetsCollectionFooterView.m in Sources */,
 				A58EB4F81B411EE00058CFD5 /* UIImage+Water.m in Sources */,

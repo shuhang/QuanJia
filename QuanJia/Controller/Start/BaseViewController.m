@@ -71,6 +71,11 @@
     }
 }
 
+- ( void ) doRefreshSelfView
+{
+    
+}
+
 - ( void ) doBack
 {
     FORCE_CLOSE_KEYBOARD;

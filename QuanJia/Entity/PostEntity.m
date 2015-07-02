@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 shuhang.pku. All rights reserved.
 //
 
-#import "QuestionEntity.h"
+#import "PostEntity.h"
 
-@implementation QuestionEntity
+@implementation PostEntity
 
 @end

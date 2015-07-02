@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "QuanEntity.h"
 
 @interface QuanInfoViewController : BaseViewController
+
+@property( nonatomic, strong ) QuanEntity * entity;
+@property( nonatomic, strong ) NSMutableArray * arrayData;
 
 @end

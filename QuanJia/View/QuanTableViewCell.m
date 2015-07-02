@@ -17,7 +17,7 @@
     {
         self.backgroundColor = [UIColor clearColor];
         
-        backgroundView = [[UIView alloc] initWithFrame:CGRectMake( 20, 10, Screen_Width - 40, 90 )];
+        backgroundView = [[UIView alloc] initWithFrame:CGRectMake( 20, 8, Screen_Width - 40, 90 )];
         backgroundView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:backgroundView];
         
@@ -33,6 +33,7 @@
         
         line = [[UIView alloc] initWithFrame:CGRectMake( 10, [Tool getBottom:imageHead] + 5, backgroundView.frame.size.width - 20, 0.5)];
         line.backgroundColor = Color_Light_Gray;
+        [backgroundView addSubview:line];
         
         viewMessage = [[UIView alloc] initWithFrame:CGRectZero];
         [backgroundView addSubview:viewMessage];
@@ -54,13 +55,13 @@
     }
     else
     {
-        UILabel * labelWord = [[UILabel alloc] initWithFrame:CGRectMake( 10, 10, backgroundView.frame.size.width - 60, 20 )];
+        UILabel * labelWord = [[UILabel alloc] initWithFrame:CGRectMake( 0, 5, backgroundView.frame.size.width - 60, 20 )];
         labelWord.textColor = Color_Gray;
         labelWord.font = [UIFont systemFontOfSize:Text_Size_Small];
         labelWord.text = self.entity.quanWord;
         [viewMessage addSubview:labelWord];
         
-        UIView * point = [[UIView alloc] initWithFrame:CGRectMake( backgroundView.frame.size.width - 27, 10, 4, 4)];
+        UIView * point = [[UIView alloc] initWithFrame:CGRectMake( backgroundView.frame.size.width - 37, 12, 4, 4)];
         point.backgroundColor = Bg_Green;
         point.layer.masksToBounds = YES;
         point.layer.cornerRadius = 2;
