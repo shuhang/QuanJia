@@ -15,6 +15,9 @@
 #import "PostTableViewCell.h"
 #import "Tool.h"
 #import "LinkEntity.h"
+#import "SystemTableViewCell.h"
+#import "SystemEntity.h"
+#import "QuestionInfoViewController.h"
 
 @interface QuanInfoViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -128,7 +131,7 @@
 
 - ( void ) headerRereshing
 {
-    for( int i = 0; i < 10; i ++ )
+    for( int i = 0; i < 5; i ++ )
     {
         PostEntity * entity = [PostEntity new];
         entity.type = i % 3;
@@ -137,11 +140,18 @@
         entity.userName = @"纯洁帝完美";
         entity.userHeadUrl = @"http://118.186.214.42:5000/images/cc84b8f0-a30d-11e4-94bd-05c2c1bd021c.jpeg";
         entity.createTime = @"2015-07-02 11:11";
+        entity.actPlace = @"银河王朝大酒店";
+        entity.actStartTime = @"2015-07-03 11:11";
+        entity.actEndTime = @"2015-07-03 11:11";
         entity.arrayAnswer = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
         entity.arrayComment = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
         entity.arrayPraise = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
         entity.arrayActBack = [NSMutableArray arrayWithObjects:@"", @"", @"", nil];
         entity.arrayActJoin = [NSMutableArray array];
+        for( int i = 0; i < 8; i ++ )
+        {
+            [entity.arrayActJoin addObject:@"http://118.186.214.42:5000/images/cc84b8f0-a30d-11e4-94bd-05c2c1bd021c.jpeg"];
+        }
         
         if( i % 3 == 1 || i == 5 )
         {
@@ -172,6 +182,19 @@
         
         [self.arrayData addObject:entity];
     }
+    
+    PostEntity * entity = [PostEntity new];
+    entity.type = 3;
+    SystemEntity * system = [SystemEntity new];
+    system.createTime = @"2015-07-03 11:11";
+    system.userHeadUrl = @"http://118.186.214.42:5000/images/cc84b8f0-a30d-11e4-94bd-05c2c1bd021c.jpeg";
+    system.info = @"已累计发布10次活动，为本群做出了卓越贡献，特授予1级活动达人称号";
+    system.userName = @"纯洁帝完美";
+    system.arrayPraise = [NSMutableArray arrayWithObjects:@"", nil];
+    system.arrayComment = [NSMutableArray arrayWithObjects:@"", @"", nil];
+    entity.systemEntity = system;
+    [self.arrayData addObject:entity];
+    
     [dataTableView reloadData];
     [dataTableView headerEndRefreshing];
 }
@@ -228,7 +251,14 @@
     }
     else
     {
-        return nil;
+        SystemTableViewCell * cell = [tableView1 dequeueReusableCellWithIdentifier:SystemTableCell];
+        if( !cell )
+        {
+            cell = [[SystemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SystemTableCell];
+        }
+        cell.entity = entity.systemEntity;
+        [cell updateCell];
+        return cell;
     }
 }
 
@@ -278,18 +308,47 @@
                 if( entity.arrayLink.count == 0 && entity.arrayPicture.count == 0 ) height -= 10;
             }
         }
-        
+        if( entity.type == 2 ) height += 80;
         return height;
     }
     else
     {
-        return 160;
+        UILabel * tempLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        tempLabel.font = [UIFont systemFontOfSize:Text_Size_Big];
+        tempLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        tempLabel.numberOfLines = 3;
+        tempLabel.frame = CGRectMake( 20, 0, Screen_Width - 40, 0 );
+        [tempLabel setAttributedText:[Tool getModifyString:[NSString stringWithFormat:@"%@ %@", entity.systemEntity.userName, entity.systemEntity.info]]];
+        [tempLabel sizeToFit];
+        return 158 + tempLabel.frame.size.height;
     }
 }
 
 - (void)tableView:(UITableView *)tableView_ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView_ deselectRowAtIndexPath:indexPath animated:YES];
+    
+    PostEntity * entity = [self.arrayData objectAtIndex:indexPath.row];
+    switch( entity.type )
+    {
+        case 0 :
+        {
+            
+            break;
+        }
+        case 1 :
+        {
+            break;
+        }
+        case 2 :
+        {
+            break;
+        }
+        case 3 :
+        {
+            break;
+        }
+    }
 }
 
 @end

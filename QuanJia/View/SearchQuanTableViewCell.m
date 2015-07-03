@@ -63,6 +63,7 @@
         [buttonAdd.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:Text_Size_Small]];
         [buttonAdd setTitle:@"\U0000F067  申请加入" forState:UIControlStateNormal];
         buttonAdd.layer.cornerRadius = 3.0f;
+        buttonAdd.layer.masksToBounds = YES;
         [backgroundView addSubview:buttonAdd];
         
         buttonWrite = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -73,6 +74,7 @@
         [buttonWrite.titleLabel setFont:[UIFont fontWithName:@"FontAwesome" size:Text_Size_Small]];
         [buttonWrite setTitle:@"\U0000F0E0  发信咨询" forState:UIControlStateNormal];
         buttonWrite.layer.cornerRadius = 3.0f;
+        buttonWrite.layer.masksToBounds = YES;
         [backgroundView addSubview:buttonWrite];
     }
     return self;

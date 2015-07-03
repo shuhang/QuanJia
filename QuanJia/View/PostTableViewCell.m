@@ -33,8 +33,9 @@
         labelName.font = [UIFont systemFontOfSize:Text_Size_Small];
         [backgroundView addSubview:labelName];
         
-        labelTime = [[UILabel alloc] initWithFrame:CGRectMake( backgroundView.frame.size.width - 100, 12, 100, 15)];
+        labelTime = [[UILabel alloc] initWithFrame:CGRectMake( backgroundView.frame.size.width - 100, 12, 90, 15)];
         labelTime.textColor = Color_Gray;
+        labelTime.textAlignment = NSTextAlignmentRight;
         labelTime.font = [UIFont systemFontOfSize:Text_Size_Micro];
         [backgroundView addSubview:labelTime];
         
@@ -91,6 +92,10 @@
         labelTitle.lineBreakMode = NSLineBreakByTruncatingTail | NSLineBreakByWordWrapping;
         labelTitle.numberOfLines = 2;
         [backgroundView addSubview:labelTitle];
+        
+        viewAct = [[UIView alloc] initWithFrame:CGRectZero];
+        viewAct.backgroundColor = [UIColor clearColor];
+        [backgroundView addSubview:viewAct];
         
         CGFloat width = backgroundView.frame.size.width / 4;
         
@@ -240,11 +245,61 @@
     [labelTitle setAttributedText:[Tool getModifyString:value]];
     [labelTitle sizeToFit];
     
+    CGFloat bottom = [Tool getBottom:labelTitle] + 10;
+    if( self.entity.type == 2 )
+    {
+        [viewAct removeFromSuperview];
+        viewAct = [[UIView alloc] initWithFrame:CGRectMake( 10, bottom, Screen_Width - 40, 70 )];
+        viewAct.backgroundColor = [UIColor clearColor];
+        [backgroundView addSubview:viewAct];
+        
+        UILabel * labelActTime = [[UILabel alloc] initWithFrame:CGRectMake( 0, 0, Screen_Width - 40, 20 )];
+        labelActTime.font = [UIFont fontWithName:@"FontAwesome" size:Text_Size_Small];
+        labelActTime.textColor = Color_Heavy_Gray;
+        labelActTime.text = [NSString stringWithFormat:@"\U0000F017    %@ - %@", self.entity.actStartTime, self.entity.actEndTime];
+        [viewAct addSubview:labelActTime];
+        
+        UILabel * labelActPlace = [[UILabel alloc] initWithFrame:CGRectMake( 2, [Tool getBottom:labelActTime] + 5, Screen_Width - 40, 20 )];
+        labelActPlace.font = [UIFont fontWithName:@"FontAwesome" size:Text_Size_Small];
+        labelActPlace.textColor = Color_Heavy_Gray;
+        labelActPlace.text = [NSString stringWithFormat:@"\U0000F041    %@", self.entity.actPlace];
+        [viewAct addSubview:labelActPlace];
+        
+        UILabel * labelActJoin = [[UILabel alloc] initWithFrame:CGRectMake( 1, [Tool getBottom:labelActPlace] + 5, 15, 20 )];
+        labelActJoin.font = [UIFont fontWithName:@"FontAwesome" size:12];
+        labelActJoin.textColor = Color_Heavy_Gray;
+        labelActJoin.text = @"\U0000F058   ";
+        [viewAct addSubview:labelActJoin];
+        
+        UIView * viewActImage = [[UIView alloc] initWithFrame:CGRectMake( [Tool getRight:labelActJoin] + 7, [Tool getBottom:labelActPlace] + 5, Screen_Width - 80, 20)];
+        [viewAct addSubview:viewActImage];
+        int count = self.entity.arrayActJoin.count;
+        if( count > 7 ) count = 7;
+        for( int i = 0; i < count; i ++ )
+        {
+            UIImageView * user = [[UIImageView alloc] initWithFrame:CGRectMake( i * 25, 0, 20, 20)];
+            user.layer.masksToBounds = YES;
+            user.layer.cornerRadius = 10;
+            [user sd_setImageWithURL:[NSURL URLWithString:[self.entity.arrayActJoin objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"head_default"]];
+            [viewActImage addSubview:user];
+        }
+        
+        bottom = [Tool getBottom:viewAct] + 10;
+    }
+    else
+    {
+        viewAct.hidden = YES;
+    }
+    
     CGFloat width = backgroundView.frame.size.width / 4;
-    labelBottom1.frame = CGRectMake( 0, [Tool getBottom:labelTitle] + 10, width, 15);
-    labelBottom2.frame = CGRectMake( width, [Tool getBottom:labelTitle] + 10, width, 15);
-    labelBottom3.frame = CGRectMake( width * 2, [Tool getBottom:labelTitle] + 10, width, 15);
-    labelBottom4.frame = CGRectMake( width * 3, [Tool getBottom:labelTitle] + 10, width, 15);
+    labelBottom1.frame = CGRectMake( 0, bottom, width, 15);
+    labelBottom2.frame = CGRectMake( width, bottom, width, 15);
+    labelBottom3.frame = CGRectMake( width * 2, bottom, width, 15);
+    labelBottom4.frame = CGRectMake( width * 3, bottom, width, 15);
+    labelBottom1.hidden = NO;
+    labelBottom2.hidden = NO;
+    labelBottom3.hidden = NO;
+    labelBottom4.hidden = NO;
     switch( self.entity.type )
     {
         case 0 :
@@ -295,6 +350,7 @@
             if( self.entity.arrayLink.count == 0 && self.entity.arrayPicture.count == 0 ) height -= 10;
         }
     }
+    if( self.entity.type == 2 ) height += 80;
     backgroundView.frame = CGRectMake( 10, 5, Screen_Width - 20, height );
 }
 

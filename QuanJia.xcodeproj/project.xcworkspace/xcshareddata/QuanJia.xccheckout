@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>47F6C69A-F605-48B7-B60B-32389ACB2C2A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>QuanJia</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>74D21135BF0E94315E60CA6C73B6D6B585B9BAF7</key>
 		<string>https://github.com/shuhang/QuanJia.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>QuanJia.xcodeproj/project.xcworkspace</string>
+	<string>QuanJia.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>74D21135BF0E94315E60CA6C73B6D6B585B9BAF7</key>

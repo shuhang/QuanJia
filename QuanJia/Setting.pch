@@ -61,5 +61,6 @@ return instance;\
 #define QuanCell @"QuanCell"
 #define PostTableCell @"PostTableCell"
 #define SystemTableCell @"SystemTableCell"
+#define AnswerTableCell @"AnswerTableCell"
 
 #endif

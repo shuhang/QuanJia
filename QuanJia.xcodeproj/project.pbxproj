@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A55934991B4635EF0097D591 /* SystemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A55934981B4635EF0097D591 /* SystemTableViewCell.m */; };
+		A559349C1B46362F0097D591 /* SystemEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A559349B1B46362F0097D591 /* SystemEntity.m */; };
 		A55FF29F1B3B9BFD005A9A56 /* tab1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55FF2971B3B9BFD005A9A56 /* tab1@2x.png */; };
 		A55FF2A01B3B9BFD005A9A56 /* tab1_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55FF2981B3B9BFD005A9A56 /* tab1_p@2x.png */; };
 		A55FF2A11B3B9BFD005A9A56 /* tab2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A55FF2991B3B9BFD005A9A56 /* tab2@2x.png */; };
@@ -145,6 +147,10 @@
 		A58EB5231B4130A50058CFD5 /* AddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EB5221B4130A50058CFD5 /* AddPostViewController.m */; };
 		A58EB5261B4134910058CFD5 /* AddActViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58EB5251B4134910058CFD5 /* AddActViewController.m */; };
 		A5B7E1A61B3CF199002CCCA3 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B7E1A51B3CF199002CCCA3 /* point.png */; };
+		A5E22BEF1B46729400D0CA85 /* QuestionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E22BEE1B46729400D0CA85 /* QuestionInfoViewController.m */; };
+		A5E22BF31B46734800D0CA85 /* QuestionInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E22BF21B46734800D0CA85 /* QuestionInfoView.m */; };
+		A5E22BF61B46786900D0CA85 /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E22BF51B46786900D0CA85 /* AnswerTableViewCell.m */; };
+		A5E22BF91B468A6800D0CA85 /* CommentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E22BF81B468A6800D0CA85 /* CommentEntity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +164,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A55934971B4635EF0097D591 /* SystemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemTableViewCell.h; sourceTree = "<group>"; };
+		A55934981B4635EF0097D591 /* SystemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemTableViewCell.m; sourceTree = "<group>"; };
+		A559349A1B46362F0097D591 /* SystemEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemEntity.h; sourceTree = "<group>"; };
+		A559349B1B46362F0097D591 /* SystemEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemEntity.m; sourceTree = "<group>"; };
 		A55FF2971B3B9BFD005A9A56 /* tab1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1@2x.png"; sourceTree = "<group>"; };
 		A55FF2981B3B9BFD005A9A56 /* tab1_p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab1_p@2x.png"; sourceTree = "<group>"; };
 		A55FF2991B3B9BFD005A9A56 /* tab2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab2@2x.png"; sourceTree = "<group>"; };
@@ -422,6 +432,14 @@
 		A58EB5241B4134910058CFD5 /* AddActViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActViewController.h; sourceTree = "<group>"; };
 		A58EB5251B4134910058CFD5 /* AddActViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddActViewController.m; sourceTree = "<group>"; };
 		A5B7E1A51B3CF199002CCCA3 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
+		A5E22BED1B46729400D0CA85 /* QuestionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionInfoViewController.h; sourceTree = "<group>"; };
+		A5E22BEE1B46729400D0CA85 /* QuestionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionInfoViewController.m; sourceTree = "<group>"; };
+		A5E22BF11B46734800D0CA85 /* QuestionInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionInfoView.h; sourceTree = "<group>"; };
+		A5E22BF21B46734800D0CA85 /* QuestionInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionInfoView.m; sourceTree = "<group>"; };
+		A5E22BF41B46786900D0CA85 /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
+		A5E22BF51B46786900D0CA85 /* AnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTableViewCell.m; sourceTree = "<group>"; };
+		A5E22BF71B468A6800D0CA85 /* CommentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentEntity.h; sourceTree = "<group>"; };
+		A5E22BF81B468A6800D0CA85 /* CommentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentEntity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +498,10 @@
 				A57D8BAD1B428F170036B8B7 /* SearchQuanTableViewCell.m */,
 				A5694B481B44D6C200958284 /* QuanTableViewCell.h */,
 				A5694B491B44D6C200958284 /* QuanTableViewCell.m */,
+				A55934971B4635EF0097D591 /* SystemTableViewCell.h */,
+				A55934981B4635EF0097D591 /* SystemTableViewCell.m */,
+				A5E22BF41B46786900D0CA85 /* AnswerTableViewCell.h */,
+				A5E22BF51B46786900D0CA85 /* AnswerTableViewCell.m */,
 			);
 			name = Tab1;
 			sourceTree = "<group>";
@@ -770,6 +792,7 @@
 		A58B28001B39575A004DF0F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5E22BEC1B46728200D0CA85 /* Info */,
 				A58B28011B39575A004DF0F8 /* Start */,
 				A58B28021B39575A004DF0F8 /* Tab1 */,
 				A58B28031B39575A004DF0F8 /* Tab2 */,
@@ -857,6 +880,10 @@
 				A57034EC1B43EA0800905827 /* LinkEntity.m */,
 				A5694B451B44D5FF00958284 /* QuanEntity.h */,
 				A5694B461B44D5FF00958284 /* QuanEntity.m */,
+				A559349A1B46362F0097D591 /* SystemEntity.h */,
+				A559349B1B46362F0097D591 /* SystemEntity.m */,
+				A5E22BF71B468A6800D0CA85 /* CommentEntity.h */,
+				A5E22BF81B468A6800D0CA85 /* CommentEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -888,6 +915,7 @@
 		A58B280A1B39575A004DF0F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5E22BF01B46733200D0CA85 /* Tab1 */,
 				A55FF2FF1B3BA5A0005A9A56 /* Cell */,
 			);
 			path = View;
@@ -1169,6 +1197,24 @@
 			path = CGPlaceholder;
 			sourceTree = "<group>";
 		};
+		A5E22BEC1B46728200D0CA85 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				A5E22BED1B46729400D0CA85 /* QuestionInfoViewController.h */,
+				A5E22BEE1B46729400D0CA85 /* QuestionInfoViewController.m */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		A5E22BF01B46733200D0CA85 /* Tab1 */ = {
+			isa = PBXGroup;
+			children = (
+				A5E22BF11B46734800D0CA85 /* QuestionInfoView.h */,
+				A5E22BF21B46734800D0CA85 /* QuestionInfoView.m */,
+			);
+			path = Tab1;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1307,6 +1353,7 @@
 				A5694B471B44D5FF00958284 /* QuanEntity.m in Sources */,
 				A57D8BA61B428C6C0036B8B7 /* QBImagePickerGroupCell.m in Sources */,
 				A55FF32E1B3BAE11005A9A56 /* FMDatabaseAdditions.m in Sources */,
+				A5E22BEF1B46729400D0CA85 /* QuestionInfoViewController.m in Sources */,
 				A58EB51A1B4122E20058CFD5 /* AddQuestionViewController.m in Sources */,
 				A58EB4F31B411EE00058CFD5 /* UIFont+Extend.m in Sources */,
 				A57D8B851B4284850036B8B7 /* AddQuanViewController.m in Sources */,
@@ -1319,6 +1366,7 @@
 				A58EB4F91B411EE00058CFD5 /* UITableViewCell+Extend.m in Sources */,
 				A55FF32D1B3BAE11005A9A56 /* FMDatabase.m in Sources */,
 				A57034E71B43D0F400905827 /* AskToJoinQuanViewController.m in Sources */,
+				A559349C1B46362F0097D591 /* SystemEntity.m in Sources */,
 				A55FF3311B3BAE11005A9A56 /* FMResultSet.m in Sources */,
 				A55FF32A1B3BAE11005A9A56 /* AFURLRequestSerialization.m in Sources */,
 				A58EB50C1B411EE00058CFD5 /* UIImageView+WebCache.m in Sources */,
@@ -1347,6 +1395,7 @@
 				A57D8BA01B428C6C0036B8B7 /* QBAssetsCollectionFooterView.m in Sources */,
 				A58EB4F81B411EE00058CFD5 /* UIImage+Water.m in Sources */,
 				A55FF3291B3BAE11005A9A56 /* AFURLConnectionOperation.m in Sources */,
+				A5E22BF61B46786900D0CA85 /* AnswerTableViewCell.m in Sources */,
 				A56792091B3A4C0800A536E9 /* IQKeyboardManager.m in Sources */,
 				A58EB50F1B411EE00058CFD5 /* UIImageView+SD.m in Sources */,
 				A58EB4F21B411EE00058CFD5 /* UIDevice+Extend.m in Sources */,
@@ -1361,6 +1410,7 @@
 				A57D8B4D1B42352A0036B8B7 /* CNPPopupController.m in Sources */,
 				A567922A1B3A95A700A536E9 /* Tab3ViewController.m in Sources */,
 				A58EB4EC1B411EE00058CFD5 /* NSArray+Extend.m in Sources */,
+				A5E22BF91B468A6800D0CA85 /* CommentEntity.m in Sources */,
 				A58EB4F61B411EE00058CFD5 /* UIImage+Extend.m in Sources */,
 				A58B280E1B395B75004DF0F8 /* Tool.m in Sources */,
 				A58EB4FA1B411EE00058CFD5 /* UIView+Extend.m in Sources */,
@@ -1370,7 +1420,9 @@
 				A58EB4E91B411EE00058CFD5 /* CoreArchive.m in Sources */,
 				A567920B1B3A4C0800A536E9 /* IQSegmentedNextPrevious.m in Sources */,
 				A55FF2A91B3B9FDA005A9A56 /* QuanInfoViewController.m in Sources */,
+				A55934991B4635EF0097D591 /* SystemTableViewCell.m in Sources */,
 				A58B28171B3967EC004DF0F8 /* BaseViewController.m in Sources */,
+				A5E22BF31B46734800D0CA85 /* QuestionInfoView.m in Sources */,
 				A58EB5011B411EE00058CFD5 /* SDWebImageCompat.m in Sources */,
 				A58EB5051B411EE00058CFD5 /* SDWebImageManager.m in Sources */,
 				A56792081B3A4C0800A536E9 /* IQUIWindow+Hierarchy.m in Sources */,
@@ -1546,6 +1598,7 @@
 				INFOPLIST_FILE = QuanJia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wnoshorten-64-to-32";
 			};
 			name = Debug;
 		};
@@ -1559,6 +1612,7 @@
 				INFOPLIST_FILE = QuanJia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wnoshorten-64-to-32";
 			};
 			name = Release;
 		};

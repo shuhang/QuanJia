@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SystemEntity.h"
 
 @interface PostEntity : NSObject
 
@@ -28,6 +29,7 @@
 @property( nonatomic, strong ) NSString * actEndTime;
 @property( nonatomic, strong ) NSString * actPlace;
 @property( nonatomic, assign ) int sex;
+@property( nonatomic, assign ) int answerCount;
 @property( nonatomic, assign ) BOOL hasSaved;
 @property( nonatomic, strong ) NSString * createTime;
 @property( nonatomic, strong ) NSMutableArray * arrayPicture;
@@ -38,5 +40,7 @@
 @property( nonatomic, strong ) NSMutableArray * arrayAnswer;
 @property( nonatomic, strong ) NSMutableArray * arrayActJoin;
 @property( nonatomic, strong ) NSMutableArray * arrayActBack;
+
+@property( nonatomic, strong ) SystemEntity * systemEntity;
 
 @end
